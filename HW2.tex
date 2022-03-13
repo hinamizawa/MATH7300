@@ -1,0 +1,260 @@
+\documentclass[12pt,reqno]{amsart}
+\usepackage{fullpage}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{times}
+\usepackage{graphicx}
+\usepackage{mathtools}
+\usepackage{breakurl}
+\usepackage{bm}
+\usepackage{url}
+\usepackage[all]{xy}
+\usepackage[margin=0.8in,footskip=0.25in]{geometry}
+\usepackage[all]{xy}
+\usepackage{tikz}
+
+\usepackage[colorlinks=true,
+            linkcolor=red,
+            urlcolor=blue,
+            citecolor=gray]{hyperref}
+\vfuzz=2pt
+
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\DeclareMathOperator{\cok}{coker}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\ann}{Ann}
+\DeclareMathOperator{\Hom}{Hom}
+
+
+% some "funny lines" referred to later:
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+{\theoremstyle{remark}\newtheorem*{remark}{Remark}}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+
+\newcommand{\lex}{\mbox{lexdeg}}
+\newcommand{\mymod}[3]{#1 \equiv #2 \Mod{#3}}
+\newcommand{\ccc}{\mathcal{C}}
+\newcommand{\nmm}[2]{\text{N}_{#1}(#2)}
+\newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
+\newcommand{\gal}{\text{Gal}}
+\newcommand{\cc}{\mathbb{C}}
+\newcommand{\zz}{\mathbb{Z}}
+\newcommand{\ta}[1]{\langle #1 \rangle}
+\newcommand{\ff}{\mathbb{F}}
+\newcommand{\qq}{\mathbb{Q}}
+\newcommand{\Tor}[2]{\mathbf{Tor}_{#1}(#2)}
+\newcommand{\sqrtn}[1]{\sqrt[n]{#1}}
+\newcommand{\charr}{\text{char}}
+\newcommand{\disc}[1]{\mbox{disc}(#1)}
+\newcommand{\Aut}{\text{Aut}}
+\newcommand{\Inn}{\text{Inn}}
+\newcommand{\Gal}{\text{Gal}}
+\newcommand{\sgn}{\text{sgn}}
+\newcommand{\irr}{\text{irr}}
+\newcommand{\of}{\overline{F}}
+\newcommand{\ok}{\overline{K}}
+\newcommand{\ZZ}{\mathbb{Z}}
+\newcommand{\NN}{\mathbb{N}}
+\newcommand{\CC}{\mathbb{C}}
+\newcommand{\QQ}{\mathbb{Q}}
+\newcommand{\RR}{\mathbb{R}}
+\newcommand{\FF}{\mathbb{F}}
+\newcommand{\Tr}{\text{Tr}}
+\newcommand{\nm}{\text{N}}
+\newcommand{\tk}{\theta_K}
+\newcommand{\mm}{\mathfrak{m}}
+\newcommand{\tor}{\mathbf{Tor}}
+\newcommand{\conv}[1]{\mathrm{conv}(#1)}
+\newcommand{\diam}[1]{\mathrm{diam}(#1)}
+\newcommand{\la}{\langle}
+\newcommand{\ra}{\rangle}
+
+\begin{document}
+
+\title{HW2}
+
+\noindent To clarify, 0 in my solutions can mean the real number 0 or the zero vector or the origin point in the Euclidean space. One might easily judge the meaning from the context. I will not distinguish a point and the vector from 0 to it either.
+
+
+\vspace{0.2in}
+
+\noindent \textbf{Q1:} We choose the order $$000<010<110<100<101<111<011<001,$$ where each binary is a vertex of the hypercube with the obvious identification, for example $000=(0,0,0)$. Note the Hamming distance for adjacent vertices at above ordering is 1. We know that the 6 facets of $P$ are of the form $\{0**\}, \{1**\}, \{*0*\},\{*1*\}, \{**0\}$ and $\{**1\}$, \emph{cf.} Q6 if you want. Then it is routine to check the Gale's evenness condition for each facet, where the vertices of each facet are in bold font:
+\begin{enumerate}
+  \item Facet $\{0**\}: \textbf{000}<\textbf{010}<110<100<101<111<\textbf{011}<\textbf{001}$;
+  \item Facet $\{1**\}: 000<010<\textbf{110}<\textbf{100}<\textbf{101}<\textbf{111}<011<001$;
+  \item Facet $\{*0*\}: \textbf{000}<010<110<\textbf{100}<\textbf{101}<111<011<\textbf{001}$;
+  \item Facet $\{*1*\}: 000<\textbf{010}<\textbf{110}<100<101<\textbf{111}<\textbf{011}<001$;
+  \item Facet $\{**0\}: \textbf{000}<\textbf{010}<\textbf{110}<\textbf{100}<101<111<011<001$;
+  \item Facet $\{**1\}: 000<010<110<100<\textbf{101}<\textbf{111}<\textbf{011}<\textbf{001}$.
+\end{enumerate}
+% We choose the ``standard'' order $$000<001<010<011<100<101<110<111,$$ where each binary is a vertex of the hypercube with the obvious identification, for example $000=(0,0,0)$. Then the 6 facets of $P$ are of the form $\{0**\}, \{1**\}, \{*0*\},\{*1*\}, \{**0\}$ and $\{**1\}$, \emph{cf.} Q6 if you want. Then it is routine to check the Gale's evenness condition for each facet. For example, for the facet $\{*0*\}$, we have  $$\textbf{000}<\textbf{001}<010<011<\textbf{100}<\textbf{101}<110<111,$$ where the vertices of the facet are in bold font and the Gale's evenness condition is clear to satisfy. A more straight-forward argument is as follows. Since we choose the standard order on binaries, the next adjacent number is increased by 1. So the binaries $*1\_$ (or $*0\_$) appears in adjacent $2^d$-element groups, where $d$ is the length of the tail, and the number of such groups is $2^l$, where $l$ is the length of the head.
+
+
+
+
+\newpage
+
+\noindent \textbf{Q2:} By the Centerpoint theorem, we know there is a center point $x_i$ for each set $A_i$. Now if $x_1,\dots, x_k$ are affinely independent, then there is a unique $(k-1)$-flat containing all $x_i$; if not, then the $(k-1)$-flat is not unique, but we can still find one. Denoting by $P$ the/a $(k-1)$-flat containing all $x_i$, we claim $P$ is the desired affine space. Let $S$ be any hyperplane containing $P$. Then in particular, $S$ contains all $x_i$. By the definition of a centerpoint, each of the closed half-space determined by $S$ contains $\frac{1}{d+1}|A_i|$ points from $A_i$ as it contains $x_i$. We are done.
+
+
+
+\newpage
+% \{x\in \RR^d: \max{|x_i|}\leq 1\}
+\noindent \textbf{Q3:} Take $Y=(y_1,\dots,y_d)\in C^*$. Then by definition, we have $Y\cdot X\leq 1$ for any $X\in C$. In particular, take $$X_1^+ = (1,0,\dots,0), X_2^+=(0,1,\dots,0),\dots, X_d^+=(0,0,\dots,1)$$ and $$X_1^- = (-1,0,\dots,0), X_2^-=(0,-1,\dots,0),\dots, X_d^-=(0,0,\dots,-1),$$ from $C$. Then for each $i$, we have $$Y\cdot X_i^{\pm} = \pm y_i \leq 1,$$ that is, $-1\leq y_i\leq 1$. So $Y\in \{\bold{x}\in \RR^d: \max{|x_i|}\leq 1\}$. Therefore, $C^* \subset \{\bold{x}\in \RR^d: \max{|x_i|}\leq 1\}$.
+
+
+To see the reverse inclusion, take $Y=(y_1,\dots,y_d)\in  \{\bold{x}\in \RR^d: \max{|x_i|}\leq 1\}$. Then $-1\leq y_i\leq 1$ for each $i$. For any $X=(x_1,\dots,x_d)\in C$, we have
+\begin{align*}
+  Y\cdot X & = y_1x_1 + y_2 x_2+\dots+y_d x_d            \\
+           & \leq |y_1x_1 + y_2 x_2+\dots+y_d x_d|       \\
+           & \leq |y_1x_1| + |y_2 x_2|+\dots+|y_d x_d|   \\
+           & = |y_1||x_1| + |y_2||x_2|+\dots+|y_d|| x_d| \\
+           & \leq |x_1| + |x_2|+\dots+| x_d| \leq 1.
+\end{align*}
+This says $Y\in C^*$ and so $\{\bold{x}\in \RR^d: \max{|x_i|}\leq 1\} \subset C^*$.
+
+
+Therefore, $C^*  =\{\bold{x}\in \RR^d: \max{|x_i|}\leq 1\} $.
+
+
+\newpage
+
+\noindent \textbf{Q4:} Pick any two $f,g\in X^*$. Then for all $x\in X$ and $\lambda\in [0,1]$, we have
+$$x\cdot (\lambda f+(1-\lambda)g) = \lambda x\cdot f+(1-\lambda) x\cdot g \leq \lambda+(1-\lambda) = 1.$$ This says $X^*$ is convex whatever $X$ is. And $(X^*)^*$ is also convex since it is a dual.
+
+% For any two sets $A\subset B\subset \RR^d$, if $x\in B^*$, then $x\cdot b$ for any $b\in B$, in particular, for any $b\in A\subset B^*$. This means $B^*\subset A^*$.
+
+Take $x\in X$. Then for any $y\in X^*$, we have $x\cdot y \leq 1$ by the definition of $X^*$. And so $x\in (X^*)^*$ and it follows that $X\subset (X^*)^*$.
+
+To see the reverse inclusion, we show that if $x\notin X$, then $x\notin (X^*)^*$. Note $X$ is closed and convex with $0\in X$. If $x\notin X$, then by the separation theorem, there is a hyperplane $h$ separating $X$ and $\{x\}$. To be more precise, there is some $b\in \RR^d$ and a constant $c\in \RR$ such that $h=\{z\in \RR^d: b\cdot z =c\}$ and $X$ and $x$ are contained in the different open half-spaces determined $h$. Since $0\in X$, we must have $c\not=0$. Setting $b'=b/c$, we see that $h=\{z\in \RR^d: b'\cdot z =1\}$. Moreover, as $0\in X$,  $X\subset \{z\in \RR^d: b'\cdot z < 1\}$ and $x\in \{z\in \RR^d: b'\cdot z > 1\}$. The first inclusion means that $b'\in X^{*}$ and the second $x\notin (X^*)^*$.
+
+
+Therefore, $X=(X^*)^*$ for a polytope $X$ with $0\in X$.
+
+%Write $X=\conv{V}$, where $V$ is its vertices set. Suppose we can find some $x\in (X^*)^*-X$, that is, $x\notin X$ but $x\cdot y \leq 1$ for any $y\in X^*$.
+
+% Then any $x\in X$ is a convex combination of $d+1$ elements from $V$ by Carath\'eodory's theorem.
+
+% $X$ is the convex hull of its vertex set $V\subset \RR^d$.
+
+% 
+
+\newpage
+
+\noindent \textbf{Q5:} Say the $d$-simplex $\Delta$ in $\RR^d$ is constructed from $d+1$ affinely independent points $x_1,\dots,x_{d+1}$, namely, $d+1$ points in general positions, and so $$\Delta=\{\sum_{i=1}^{d+1} \lambda_i x_i: \mbox{each }  \lambda_i\geq 0 \mbox{ and } \sum_{i=1}^{d+1}\lambda_i=1\} =\conv{\{x_1,\dots,x_{d+1}\}}.$$ We aim to find $d+1$ half-spaces such that $\Delta$ is their intersection. Note for each $i$, the set $\{x_j: j\not= i\}$ is also affinely independent and hence it determines a hyperplane $$P_i=\{\sum_{j=1, j\not=i}^{d+1} \lambda_j x_j: \sum_{j=1, j\not=i}^{d+1}\lambda_j=1\}.$$ Observe that the point $x_i$ cannot lie in $P_i$; otherwise, $x_1,\dots,x_{d+1}$ are not affinely independent. Hence, $x_i$ must lie in one of the closed half-spaces determined by $P_i$ and let us call it $P_i^{+}$, indeed, $$P_i^+=t(x_i-x_{i+1}) + P_i=\{t(x_i - x_{i+1})+\sum_{j=1, j\not=i}^{d+1} \lambda_j x_j: \sum_{j=1, j\not=i}^{d+1}\lambda_j=1, t\geq 0\},$$ where $i+1$ is taken module $d+1$ and the formula has the meaning that it is the addition of the plane $P_i$ with some vector of the same direction as the vector  $x_i -x_{i+1}$. We can write it in a nicer way $$P_i^+ =\{  \sum_{j=1}^{d+1} \lambda_j x_j: \lambda_i\geq 0 \mbox{ and } \sum_{j=1}^{d+1}\lambda_j=1 \}.$$ Then $P_i^+$'s are the desired half-spaces. Indeed, we can see \begin{align*}
+  \cap_{i=1}^{d+1} P_i^+ & = \cap_{i=1}^{d+1} \{  \sum_{j=1}^{d+1} \lambda_j x_j: \lambda_i\geq 0 \mbox{ and } \sum_{j=1}^{d+1}\lambda_j=1    \} \\
+                         & =\{\sum_{j=1}^{d+1} \lambda_j x_j: \lambda_1,\dots,\lambda_{d+1}\geq 0 \mbox{ and } \sum_{j=1}^{d+1}\lambda_j=1    \} \\
+                         & = \Delta.
+\end{align*}
+
+
+
+\newpage
+
+\noindent \textbf{Q6:} We can write the hypercube as $P=\{(x,y,z)\in \RR^3: 0\leq x,y,z\leq 1\}$. The vertices have each coordinate either 0 or 1, for example, $(0,1,0)$ is a vertex. We write for short each vertex as a binary number, for example, we write $000=(0,0,0)$. Then then the vertices are $000,001,010,011,100,101,110,111$.
+
+The obvious $d$-faces of hypercube are then the hypercube itself when $d=3$ and the vertices when $d=0$. Now for $d=2$, we claim the the 6 facets of $P$ are of the form $\{0**\}, \{1**\}, \{*0*\},\{*1*\}, \{**0\}$ and $\{**1\}$, where $*$ is either 0 or 1 and we take the convex hull of these four points. More precisely, by the notation $\{0**\}$, we mean $$\conv{\{(0,y,z): y,z=0,1\}},$$ which is easily seen to be a square, and similar for other notations. Now associated with $\{0**\}, \{1**\}$ are the hyperplanes $x=0$ and $x=1$. By definition, all vertices of $\{0**\}$ (resp.  $\{1**\}$) lies on the plane $x=0$ (resp. $x=1$) and the intersection $P\cap\{x=0\}$ (resp. $P\cap \{x=1\}$) is precisely $\{(x,y,z)\in P: x=0\}$ (resp. $\{(x,y,z)\in P: x=1\}$) and is indeed the convex hull spanned by vertices $\{0**\}$ (resp. $\{1**\}$). And $P$ lies at one of the half spaces determined by $x=0$ (resp. $x=1$), namely, the half-space $x\geq 0$ (resp. $x\leq 1$). Hence $\{0**\}$  and $\{1**\}$  are facets. The same argument applies for other facets $\{*0*\},\{*1*\}, \{**0\}, \{**1\}$. For $d=1$, they are also the 1-face of the facets, and they are the line segments joining two vertices with hamming distance 1. If you insist I shall find the supporting plane associated to each edge, let me find one for you. Consider the line segment joining $(0,0,0)$ and $(1,0,0)$ and the plane $y+z=0$. Since $(0,0,0)$ and $(1,0,0)$ lies one the plane so the line segment, and indeed $P\cap \{y+z=0\}=\{(x,y,z)\in P: y=z=0\}$ and $P$ lies entirely in the half-space $y+z\geq 0$. The same story happens for other edges. And as for vertices, 0-faces, an example of supporting plane is $x+y+z=0$ where $P\cap \{x+y+z=0\}=000$ and $P$ lies in $x+y+z\geq 0$.
+
+
+
+
+\newpage
+\noindent \textbf{Q7:} (a): As the convex hull of a finite set, it is clearly a polytope. It is left to show the dimension of the convex hull is $d$.
+
+
+For any $Y=(y_1,\dots,y_{d+1})\in V$, note that $\sum_{i=1}^{d+1} y_i = 1+2+\dots +(d+1) = \frac{(d+1)(d+2)}{2}$, that is, all points $Y$ lies on the hyperplane $\sum_{i=1}^{d+1} x_i = \frac{(d+1)(d+2)}{2}$. As the hyperplane is convex, it contains $\conv{V}$. So $\dim(\conv{V})\leq d$.
+
+
+Now it suffices to find $d+1$ points from $V$ that are affinely independent. We claim \begin{align*}
+  X_1     & = (1,2,3\dots,d+1),    \\
+  X_2     & = (2,1,3,\dots,d+1),   \\
+  X_3     & = (1,3,2,\dots,d+1),   \\
+  \dots   &                        \\
+  X_{d+1} & = (1,2,3,\dots,d+1,d),
+\end{align*} where $X_i$ is obtained by applying the transposition $(i-1\quad i)$ on $(1,2,\dots,d+1)$ for $i\not=1$, are the desired points. To see that, we have $$X_i - X_1 = (0,\dots,0,1,-1,0,\dots,0),$$ that is, $(i-1)$-th coordinate is $-1$ and $i$-th coordinate is $1$ and the other coordinates are 0. Consider $X_2-X_1,X_3-X_1,\dots,X_{d+1}-X_1$. If $$\sum_{i=2}^{d+1}\lambda_i(X_i-X_1) = \lambda_2 \begin{pmatrix}
+    1      \\
+    -1     \\
+    0      \\
+    \vdots \\
+    0
+  \end{pmatrix} + \lambda_3  \begin{pmatrix}
+    0      \\
+    1      \\
+    -1     \\
+    \vdots \\
+    0
+  \end{pmatrix}  + \dots+ \lambda_{d+1} \begin{pmatrix}
+    0      \\
+    0      \\
+    0      \\
+    \vdots \\
+    -1
+  \end{pmatrix}  =0,$$ then reading coordinate-wisely we have \[\lambda_2 = 0, -\lambda_2+\lambda_3=0, \dots, -\lambda_{i-1}+\lambda_{i}=0,\dots, -\lambda_{d}+\lambda_{d+1} = 0, -\lambda_{d+1}=0, \] where the only solution is $\lambda_2=\dots=\lambda_{d+1}=0$. Hence, $X_2-X_1,X_3-X_1,\dots,X_{d+1}-X_1$ are linearly independent and so $X_1,\dots,X_{d+1}$ are affinely independent.
+
+\emph{Remark:} If one has some knowledge with the fast Fourier transform, in particular, the circulant matrix (\url{https://en.wikipedia.org/wiki/Circulant_matrix}), then he/she can see immediately that the rotations of $(1,2,\dots,d+1)$ are \emph{linearly} independent and concludes the convex hull is of dimension $\geq d$.\\
+
+
+(b): We need to show every point in $V$ is an extremal point. Fix $Y\in V$. Now after re-indexing the coordinates, we can assume $Y=(1,2,\dots, d+1)$. Suppose that $Y\in \conv{V\backslash \{Y\}}$, then by Carath\'eodory's theorem, we can find $X_1,\dots,X_{d+1}\in V\backslash \{Y\}$ such that $Y$ is a convex combination of these $d+1$ points, namely, we can find $\lambda_i\geq 0$ with $\sum_{i=1}^{d+1}\lambda_i =1$ such that \begin{equation}\label{ss}
+  Y= \lambda_1 X_1 + \dots + \lambda_{d+1} X_{d+1}.
+\end{equation}
+Write $X_i=(x_1^{i},x_2^{i},\dots,x_{d+1}^{i})$. Now reading coordinate-wisely of Equation \ref{ss}, we have $$ \lambda_1 x_j^1+\lambda_2 x_j^2+\dots +\lambda_{d+1} x_j^{d+1} = j,$$ for each $j=1,\dots,d+1$. When $j=1$, since each $x_1^{i}\geq 1$, we have $$ 1=  \lambda_1 x_1^1+\lambda_2 x_1^2+\dots +\lambda_{d+1} x_1^{d+1} \geq  \lambda_1 +\lambda_2 +\dots +\lambda_{d+1} = 1,$$ and the equality is obtained if and only if $x_1^1 = x_1^2 =\dots=x_1^{d+1}=1$. Since  $x_1^{i},x_2^{i},\dots,x_{d+1}^{i}$ is a permutation of $1,2,\dots,d+1$ for each $i$, we must have $x_2^{i},x_3^{i}\dots,x_{d+1}^{i}$ is then a permutation of $2,3,\dots,d+1$ for each $i$. Then similar argument applies when $j=2$, where we have $$ 2=  \lambda_1 x_2^1+\lambda_2 x_2^2+\dots +\lambda_{d+1} x_2^{d+1} \geq  \lambda_1 2 +\lambda_2 2 +\dots +\lambda_{d+1}  2= (\sum_{i=1}^{d+1}\lambda_i) 2 =2,$$ and the equality is obtained if and only if $x_2^1 = x_2^2 =\dots=x_2^{d+1}=2$. Repeating  the argument, we have \begin{align*}
+  x_1^1     & = x_1^2 =\dots=x_1^{d+1}=1,           \\
+  x_2^1     & = x_2^2 =\dots=x_2^{d+1}=2,           \\
+  \dots     &                                       \\
+  x_{d+1}^1 & = x_{d+1}^2 =\dots=x_{d+1}^{d+1}=d+1.
+\end{align*}
+This means $Y=X_1=\dots=X_{d+1}$, contradicting to the fact that $X_i$'s are taken from $V\backslash \{Y\}$. Hence $Y$ is an extremal point and so a vertex.\\
+
+
+(c): Recall that a proper face of a polytope $P$ is of the form $P\cap h$, where $h$ is a hyperplane such that $P$ is fully contained in one of the closed half-spaces determined by $h$. In other words, $X_1,\dots, X_k\in V$ forms a face if and only if there is a linear functional $\la f, \_ \ra$ for some $f\in \RR^{d+1}$ such
+
+\begin{enumerate}
+  \item $\la f, \_ \ra=c$  determines the hyperplane $h$ for some constant $c$;
+  \item the solutions for $\la f, x \ra = c, x\in V$ are $X_1,\dots, X_k$;
+  \item for any other point $y\in V-\{X_1,\dots, X_k\}$, we have $\la f, y \ra <c$.
+\end{enumerate}
+
+Write $f=(f_1,\dots,f_{d+1})\in  \RR^{d+1}$. Take $X=(x_1,\dots,x_{d+1})\in V$, then $\la f, X\ra =  \sum_{i=1}^{d+1}x_i f_{i} $. Denote by $v(n)$ the index of the coordinate of $X$ such that $x_{v(n)}=n$. Then $X$ maximizes $\la f, \_ \ra$ if and only if $$f_{v(1)}\leq \dots\leq f_{v(d+1)}.$$ If $f$ has all different coordinates, then the above sorted sequence is unique, and so there is only a single vertex that maximizes $\la f, \_ \ra$ --- this gives an alternative proof for part (b).
+
+Now to get an edge, we need exactly two ways to sort the coordinates of $f$ in non-decreasing order.  Say $f_k=f_l$ but no other coordinates are equal to each other, so there are $(d+1)-1=d$ distinct values from the coordinates of $f$. Then we can sort them in the two ways
+$$\dots < f_k\leq f_l<\dots \mbox{ or } \dots < f_l\leq f_k<\dots.$$
+Then the two vertices of the edge have the same coordinates, but differ from each other at where $k$ and $l$ appears in them and they must appear adjacent to each other, say $k=v(i-1)$ and $l=v(i)$. In short, they differ by a transposition $(i-1\: i)$.
+
+
+To get a $k$-face, we can argue in exactly the same way. We need there to be $(d+1)-k$ distinct values from the coordinates of $f$. In other words, we need to partition $[d+1]=\{1,2,\dots,d+1\}$ into $(d+1)-k$ subsets, where each subset is nonempty and consists of consecutive integers, and then the vertices of a $k$-face are precisely a coset of the subgroup consisting of the permutations that fixes each subset set-wisely. For example, take $d=3$. If we partition $[4]=\{1\}\cup \{2,3,4\}$ then a possible $2$-face is the convex hull determined by $$(1,2,3,4),(1,2,4,3),(1,3,2,4),(1,3,4,2),(1,4,2,3),(1,4,3,2);$$ if we partition $[4]=\{1,2\}\cup \{3,4\}$, then a possible 2-face is the square determined by $$(1,2,3,4),(2,1,3,4),(1,2,4,3),(2,1,4,3).$$ And here $(i,j,k,l)$ is understood as $\begin{pmatrix}
+    1 & 2 & 3 & 4 \\
+    i & j & k & l
+  \end{pmatrix}.$
+
+
+% \noindent \textbf{Q7:} (a): As the convex hull of a finite set, it is clearly a polytope. It is left to show the dimension of the affine hull is $d$ and so it suffices to find $d+1$ points from $V$ that are affinely independent. We take \begin{align*}
+%   X_1     & = (1,2,3,\dots,d,d+1),      \\
+%   X_2     & = (d+1,1,2,\dots,d-1,d),    \\
+%   X_3     & =(d,d+1,1,\dots, d-2, d-1), \\
+%   \dots                                 \\
+%   X_{d+1} & = (2,3,4,\dots,d+1,1),
+% \end{align*} that is, $X_i$ are cyclic permutations of $(1,2,\dots,d+1)$
+
+% We claim $X_1,\dots,X_{d+1}$ are affinely independent. Indeed, they are linearly independent. The matrix $$M =\begin{bmatrix}
+%     X_1   \\
+%     X_2   \\
+%     \dots \\
+%     X_{d+1}
+%   \end{bmatrix}  = \begin{bmatrix}
+%     1     & 2 & \dots & d   & d+1 \\
+%     d+1   & 1 & \dots & d-1 & d   \\
+%     \dots &   &       &     &     \\
+%     2     & 3 & \dots & d+1 & 1
+%   \end{bmatrix}$$
+% is a circulant matrix (\url{https://en.wikipedia.org/wiki/Circulant_matrix}). If you allow me borrow some results from linear algebras (actually, fast Fourier transform theory), the determinant is \[\det(M) = \]
+
+\end{document}
