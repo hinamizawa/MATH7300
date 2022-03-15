@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.24)  14 MAR 2022 15:30
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.1) (preloaded format=pdflatex 2022.2.24)  14 MAR 2022 20:30
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -969,11 +969,11 @@ Package rerunfilecheck Info: File `HW3.out' has not changed.
 (rerunfilecheck)             Checksum: EDE23595DCA8A4392503813D74F4CD13;94.
  ) 
 Here is how much of TeX's memory you used:
- 24570 strings out of 478584
- 439851 string characters out of 2844873
- 757355 words of memory out of 3000000
- 42110 multiletter control sequences out of 15000+600000
- 495677 words of font info for 97 fonts, out of 8000000 for 9000
+ 24568 strings out of 478584
+ 439827 string characters out of 2844873
+ 761353 words of memory out of 3000000
+ 42109 multiletter control sequences out of 15000+600000
+ 494051 words of font info for 95 fonts, out of 8000000 for 9000
  1302 hyphenation exceptions out of 8191
  84i,14n,89p,3300b,346s stack positions out of 5000i,500n,10000p,200000b,80000s
 {C:/Users/jylu/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/base/8r.enc}<C:/
@@ -994,7 +994,7 @@ ls/msbm10.pfb><C:/Users/jylu/AppData/Local/Programs/MiKTeX/fonts/type1/urw/time
 s/utmb8a.pfb><C:/Users/jylu/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times
 /utmr8a.pfb><C:/Users/jylu/AppData/Local/Programs/MiKTeX/fonts/type1/urw/times/
 utmri8a.pfb>
-Output written on HW3.pdf (7 pages, 198846 bytes).
+Output written on HW3.pdf (7 pages, 200999 bytes).
 PDF statistics:
  129 PDF objects out of 1000 (max. 8388607)
  11 named destinations out of 1000 (max. 500000)

@@ -158,7 +158,7 @@ But then $h < \frac{d! v}{K_{d-1}  \epsilon^{d-1}}$. Contradiction.
 \newpage
 
 \noindent \textbf{Q7:}
-I notice this is Exercise 2.1.1 in Matou\v{s}ek's book and find that it follows from Exercise 2.1.2, which is credited to Blichtfeld and van der Corput in the book:
+I notice this is Exercise 2.1.1 in Matou\v{s}ek's book and find that it quickly follows from Exercise 2.1.2, which is credited to Blichtfeld and van der Corput in the book:
 
 \begin{theorem}[Blichtfeld's theorem]
   If $S$ is a bounded measurable set of $\RR^d$ and $\vol{S}>k$, then there are points $s_0,\dots,s_{k}\in S$ with all $s_0-s_i\in \ZZ^d$. In other words, there is a vector $v$ such that $v+S$ contains at least $k+1$ lattice points.
@@ -170,9 +170,9 @@ I notice this is Exercise 2.1.1 in Matou\v{s}ek's book and find that it follows 
 Back to this problem. Take any $x, y \in \frac{1}{2} C$, which means $x=\frac{x'}{2}, y=\frac{y'}{2}$ for some $x',y'\in C$. Then $x+y=\frac{x'}{2} +\frac{y'}{2}$ is a convex combination of $x',y'\in C$. Since $C$ is convex, we have $x+y\in C$ and so $\frac{1}{2}C+\frac{1}{2}C \subset C$. Now $\vol{\frac{1}{2} C} = \frac{1}{2^d} \vol{C} > k$. By Blichtfeld's theorem, there are distinct points $s_0,\dots,s_k \in \frac{1}{2}C$ such that each $s_0-s_i \in \ZZ^d$ for $i=0,\dots,k$. Note that $ s_0+\frac{1}{2} C \subset \frac{1}{2} C+\frac{1}{2} C\subset C$ and $\frac{1}{2} C$ is centrally symmetric. Therefore, for each $i=1,\dots,k$, we have the lattice point $$s_0-s_i = s_0+(-s_i)\in s_0+\frac{1}{2} C\subset C.$$ There are $k$ of them and so by symmetry, $C$ contains at least $2k$ lattice points (other than the origin).\\
 
 
-
 \begin{proof}[Proof of Blichtfeld's theorem]
-  The easiest approach might be to use the fact that the Lebesgue measure is inner regular and proceed with integration of characteristic function over all $\ZZ^d$ based on \cite{blich}.
+
+  I did not figure out how to prove this. Here is the proof from \cite{old}.
 
 
   Let $f(x)=\sum_{y\in \ZZ^d} 1_{S+x}(y)$, that is, $f(x)$ is the number of lattice points in the translation $S+x$. Since $S$ is bounded and measurable, $f(x)$ is also measurable. Because the Lebesgue measure is inner regular, we have
@@ -180,23 +180,19 @@ Back to this problem. Take any $x, y \in \frac{1}{2} C$, which means $x=\frac{x'
     \int_{[0,1]^d} f(x) dx & =\sum_{y\in\ZZ^n} \int_{[0,1]^d} 1_{S+x}(y)dx  \\
                            & = \sum_{y\in\ZZ^d} \int_{[0,1]^d} 1_{S}(y-x)dx \\
                            & = \sum_{y\in\ZZ^d} \int_{y-[0,1]^d} 1_{S}(t)dt \\
-                           & =\int_{\RR^d} 1_{S}(t)dt                       \\
-                           & = \vol{S} >k.
+                           & =\int_{\RR^d} 1_{S}(t)dt = \vol{S} >k.
   \end{align*}
-  Thus, $\max_{x\in [0,1]^d} f(x) \geq 1$. We are done.
+  Thus, $\max_{x\in [0,1]^d} f(x) \geq k+1$. We are done.
+
+  The proof above can be interpreted in a geometrical way. The lattice points $\ZZ^d$ divide $\RR^d$ into cubes and so divide $S$ into $S_1,\dots,S_n$, each lying in its corresponding cube $R_1,\dots,R_n$. Now by a translation by a vector $x_i \in \ZZ^d$, we can move each $R_i$ to $[0,1]^d$. And in the meantime, $S_1,\dots,S_n$ are also translated into their congruent $S_1',\dots,S_n'$ in $[0,1]^d$. We claim some point in $[0,1]^d$ is covered by $S_1',\dots,S_n'$ more than $k$ times. If not, then the combined areas of these parts could not exceed $k$. Consequently, the combined areas  of the parts $S_1,\dots,S_n$, when translated back to their original positions in $S$ would not exceed $k$. Call this point $v$. Then $|(v+\ZZ^d)\cap C| >k$. In particular, $s_i=v+x_{i_j}$ for $i=0,\dots,k$ and some $x_{i_0},\dots, x_{i_k}$.
 \end{proof}
 
+
 \begin{thebibliography}{9}
-
-
-  \bibitem{blich}
-  H. F. Blichfeldt, \emph{A New Principle in the Geometry of Numbers, with Some Applications}, Transact. Amer. Math. Soc. \textbf{15}, 227-235 (114)
+  \bibitem{old}
+  C.D. Olds, A. Lax, and G. Davidoff, \emph{The Geometry of Numbers}, The Anneli Lax New Mathematical Library, vol. 41, The Mathematical Association of America, 2000.
 \end{thebibliography}
 
-
-% Consider the linear transformation $$f_1:\RR^d\to \RR^d,  (x_1,\dots,x_d)\mapsto (\frac{x_1}{k}, x_2,x_3,\dots,x_d),$$ namely, $f_1$ is the rescaling of the first coordinate by $\frac{1}{k}$. Set $C'=f(C)$. Then $C'$ remains convex, centrally symmetric with volume $\vol{C'} = \frac{1}{k}\vol{C} > 2^d$. By the Minkowski's theorem, $C'$ contains a lattice point other than the origin. Say the other lattice point is $P_1'=(p_1^1,\dots,p_d^1)\not=0$. And hence $C$ contains the point the lattice point $P_1=f_1^{-1}(P_1') = (k p_1^1,p_2^1,\dots,p_d^1)$ and also $-P_1$ by central symmetry. So we may take $P_1$ with the first coordinate nonnegative. Repeat the argument for $f_i$, the rescaling of the $i$-coordinate, for $i=2,\dots,d$. We conclude that $C$ contains the points $\pm P_1, \pm P_2,\dots,\pm P_d$ besides the origin 0.
-
-% If $P_1=P_2=\dots =P_n$, then $$(k p_1^1,p_2^1,\dots,p_d^1) = ( p_1^2, k p_2^2,\dots,p_d^2) =\dots=( p_1^n,p_2^n,\dots,k p_d^n).$$ In particular, we can write this common point as $P=(k p_1,\dots,k p_n)\not= 0$. Since $C$ is convex and central symmetric, it also contains $\pm i ( p_1,\dots, p_n)$ for $i=1,\dots,k$. That is, $C$ contains $2k$ distinct lattice points (other than the origin).
 
 
 
