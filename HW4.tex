@@ -12,8 +12,6 @@
 \usepackage{url}
 \usepackage[all]{xy}
 \usepackage[margin=0.8in,footskip=0.25in]{geometry}
-\usepackage[all]{xy}
-\usepackage{tikz}
 
 \usepackage[colorlinks=true,
             linkcolor=red,
@@ -183,20 +181,82 @@ As shown in the figure, the centers of the unit circles are $(0,0),(\sqrt{3},0),
 
 
 \newpage
-\noindent \textbf{Q4:}
+\noindent \textbf{Q4:} Let the $(q+1)$ points be $\{(1,x,x^2): x\in \FF_q)\}\cup\{ (0,0,1)\}$. We claim any three distinct points from these $(q+1)$ points are not collinear. These three points are either $(1,a,a^2),(1,b,b^2),(1,c,c^2)$ with $a,b,c\in \FF_q$ distinct or $(1,a,a^2),(1,b,b^2),(0,0,1)$ with $a,b\in \FF_q$ distinct. In either case, the claim follows from that \[ \det\begin{pmatrix}
+    1 & a & a^2 \\
+    1 & b & b^2 \\
+    1 & c & c^2
+  \end{pmatrix} =(c-a)(c-b)(b-a)\not= 0 \mbox{ and }  \det\begin{pmatrix}
+    1 & a & a^2 \\
+    1 & b & b^2 \\
+    0 & 0 & 1
+  \end{pmatrix} = b-a \not=0.\]
+That no three points are collinear is to say every pair of points is contained in a unique line. So this is a complete $(n+1)$-point configuration.
 
 
 \newpage
-\noindent \textbf{Q5:}
+\noindent \textbf{Q5:} Let $A,B$ be two fixed points on the plane. Then $\triangle ABC$ is a triangle with area equal to 1 if and only  if $C$ lies on one of the two line which is at distance $\frac{2}{|AB|}$ form the line $AB$, because the area of a triangle is $\frac{1}{2}\mbox{base}\cdot\mbox{height}$. Now fix one point $X\in P$, then for any other point $Y\in P$, there are two lines as distance $\frac{2}{|XY|}$ from the line $XY$. These gives us at most $2(n-1)$ lines. In this point-line configuration, each triangle with area equal to 1 contributes to 1 incidence. By the Szemer{\' e}di-Trotter theorem, there are $O(n^{2/3}(2(n-1))^{2/3}+n^{2/3} +(2(n-1))^{2/3})=O(n^{4/3})$ incidences. That is, the number of unit-area triangles with a vertex at $X$ is at most $O(n^{4/3})$. Repeating the argument for all $X\in P$,  we conclude the maximum possible number of unit-area triangles is $O(n^{7/3})$.
 
 
 \newpage
-\noindent \textbf{Q6:}
-
+\noindent \textbf{Q6:} Let $n$ be the number of of distinct lines such that each of them contains at least $k$ points of $P$. Now by the Szemer{\' e}di-Trotter theorem, the maximum possible number of incidences is $O(m^{2/3}n^{2/3}+m+n)$. The trick here is that $O(m^{2/3}n^{2/3}+m+n)=\max\{O(m), O(n), O(m^{2/3}n^{2/3})\}$. Now each line gives at least $k$ incidences and so $$kn = O(m^{2/3}n^{2/3}) \quad\mbox{ or }\quad kn=O(m) \quad\mbox{ or }\quad km=O(m),$$ which gives us $$n=O(m^2/k^3) \quad\mbox{ or }\quad n=O(m/k) \quad\mbox{ or }\quad k=O(1).$$ But $k=O(1)$ gives no restrictions at all. Hence $m= O(m^2/k^3) +O(m/k)  = O(m^2/k^3+m/k)$\footnote{This is the upper bound given in Matou{\v{s}}ek's book.}, which of course is at most $O(m^2/k^2+m/k)$.
 
 
 \newpage
-\noindent \textbf{Q7:}
+\noindent \textbf{Q7:} Let us show the crossing number of the Petersen graph is 2. The figure\footnote{From \url{https://en.wikipedia.org/wiki/Petersen_graph}.} below shows the the crossing number is at most $2$.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=4.5cm]{hw4c}
+\end{figure}
+
+The Petersen graph is symmetric, in particular, edge transitive. Suppose the Petersen graph can be drawn on the plane with one crossing or no crossing. Then with one edge removed, we get a planer graph. Since the Petersen graph is edge transitive, it implies the following graph, which is the the Petersen graph with one edge removed, is planer.
+
+\begin{center}
+  \begin{tikzpicture}[style=thick]
+    \draw (18:2cm) -- (90:2cm) -- (162:2cm) -- (234:2cm) --
+    (306:2cm);
+    \draw (18:1cm) -- (162:1cm) -- (306:1cm) -- (90:1cm) --
+    (234:1cm) -- cycle;
+    \foreach \x in {18,90,162,234,306}{
+        \draw (\x:1cm) -- (\x:2cm);
+        \draw (\x:2cm) circle (2pt);
+        \draw (\x:1cm) circle (2pt);
+      }
+    %\draw[ultra thick, red] (18:1cm) -- (18:2cm);
+    % \draw[ultra thick, red] (90:1cm) circle (1pt);
+    % \draw[ultra thick, blue] (162:1cm) circle (1pt);
+    % \draw[ultra thick, red] (234:1cm) circle (1pt);
+    % \draw[ultra thick, blue] (90:2cm) circle (1pt);
+    % \draw[ultra thick, red] (162:2cm) circle (1pt);
+    % \draw[ultra thick, blue] (234:2cm) circle (1pt);
+  \end{tikzpicture}
+\end{center}
+
+But it contains a subgraph that is a subdivision of $K_{3,3}$ as shown below, contradicting to the Kuratowski's theorem. It follows that the Petersen graph has crossing number at least 2 hence is 2.
+
+\begin{center}
+
+  \begin{tikzpicture}[style=thick]
+    \draw (18:2cm) -- (90:2cm) -- (162:2cm) -- (234:2cm) --
+    (306:2cm);
+    \draw (90:1cm) -- (306:1cm);
+    \draw (18:1cm) -- (234:1cm);
+    \draw (18:1cm) -- (162:1cm);
+    \draw (162:1cm) -- (306:1cm);
+
+    \foreach \x in {18,90,162,234,306}{
+        \draw (\x:1cm) -- (\x:2cm);
+      }
+    %\draw[ultra thick, red] (18:1cm) -- (18:2cm);
+    \draw[ultra thick, red] (18:1cm) circle (2pt);
+    \draw[ultra thick, blue] (162:1cm) circle (2pt);
+    \draw[ultra thick, red] (306:1cm) circle (2pt);
+    \draw[ultra thick, blue] (90:2cm) circle (2pt);
+    \draw[ultra thick, red] (162:2cm) circle (2pt);
+    \draw[ultra thick, blue] (234:2cm) circle (2pt);
+  \end{tikzpicture}
+\end{center}
+
 
 \end{document}
 
