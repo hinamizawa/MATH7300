@@ -113,7 +113,7 @@
 As indicated in the figure, the 8 points consist of 3 vertices of an equilateral triangle, 3 midpoints of edges, the mass center and the midpoint of the height. The 4 dotted lines are the ordinary lines.
 
 \newpage
-\noindent \textbf{Q2:} We borrow the ideas from graph theory. For each configuration $X$, we associate it with a matrix $m(X)$ with rows labeled by points and columns labeled by lines and with the entry value 1 if the point lies on the line and 0 if not. Relabeling and moving vertices around for a fixed configuration $X$ only permutes rows and columns of $m(X)$. In other words, if $X$ and $Y$ are two isomorphic combinatorial configurations, then there is a permutation matrix $P$ such that $m(Y)=P\cdot m(X)$. In particular, this means $m(X)$ and $m(Y)$ have the same rank.
+\noindent \textbf{Q2:} We borrow the ideas from graph theory. For each configuration $X$, we associate it with a matrix $m(X)$ with rows labeled by points and columns labeled by lines and with the entry value 1 if the point lies on the line and 0 if not. Relabeling and moving vertices around for a fixed configuration $X$ only permutes rows and columns of $m(X)$. In other words, if $X$ and $Y$ are two isomorphic combinatorial configurations, then there are permutation matrices $P$ and $Q$ such that $m(Y)=P m(X)Q$. In particular, this means $m(X)$ and $m(Y)$ have the same rank.
 
 Now label the Pappus configuration and another configuration as in the figure.
 
@@ -232,7 +232,7 @@ The Petersen graph is symmetric, in particular, edge transitive. Suppose the Pet
   \end{tikzpicture}
 \end{center}
 
-But it contains a subgraph that is a subdivision of $K_{3,3}$ as shown below, contradicting to the Kuratowski's theorem. It follows that the Petersen graph has crossing number at least 2 hence is 2.
+But it contains a subgraph that is a subdivision of $K_{3,3}$ as shown below, contradicting to the Kuratowski's theorem. It follows that the crossing number the Petersen graph is at least 2 hence is 2.
 
 \begin{center}
 
