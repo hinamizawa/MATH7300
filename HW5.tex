@@ -47,7 +47,7 @@
 \newcommand{\nmm}[2]{\text{N}_{#1}(#2)}
 \newcommand{\Mod}[1]{\ (\mathrm{mod}\ #1)}
 \newcommand{\gal}{\text{Gal}}
-\newcommand{\cc}{\mathbb{C}}
+\newcommand{\cc}{\mathcal{C}}
 \newcommand{\zz}{\mathbb{Z}}
 \newcommand{\ta}[1]{\langle #1 \rangle}
 \newcommand{\ff}{\mathbb{F}}
@@ -87,7 +87,7 @@
 
 \title{HW4}
 
-\noindent \textbf{Q1:} Up to rescaling, we can assume the greatest distance is 1. Let $x,y$ be two points realizing distance 1. Then all other points must lies in the bigon, which is the intersection of two unit disk centered at $x,y$. If not, then the point outside the bigon would have distance $>1$ from $x$ or $y$. Similarly,  if $x,y,z$ are three distinct points with pairwise distance 1, then all other points must lies in the Reuleaux triangle with vertices $x,y,z$.
+\noindent \textbf{Q1:} Up to rescaling, we can assume the greatest distance is 1. Let $x,y$ be two points realizing distance 1. Then all other points must lies in the bigon, which is the intersection of two unit disk centered at $x,y$. If not, then the point outside the bigon would be at distance $>1$ from $x$ or $y$. Similarly,  if $x,y,z$ are three distinct points with pairwise distance 1, then all other points must lies in the Reuleaux triangle with vertices $x,y,z$.
 
 \begin{center}
   \begin{tikzpicture}[style=thick]
@@ -108,7 +108,7 @@
 \end{center}
 
 
-Let us proceed by induction on $n$. The statement is clearly true for $n=1,2,3$ as $\binom{n}{2}\leq n$ in these cases. Suppose the statement is true for any $n-1$ points on the plane. Let $P_1,\dots, P_n$ be $n$ distinct points on the place with maximum distance 1, namely,  $\diam{\{P_1,\dots,P_n\}}=1$. Let $G$ be the graph with vertices  $P_1,\dots, P_n$ and  edges  pairs of vertices at distance 1. We want to show $|E(G)|\leq n$. If each vertex has most degree 2, then by the handshaking lemma, there are at most $n$ edges, as required. If there exists some vertex has degree at least 3, then after reordering, we can assume this vertex is $P_1$ and three vertices connected to $P_1$ are $P_2,P_3,P_4$. Note $\diam{\{P_1,\dots,P_n\}}=1$ and $||P_1P_2||=||P_1P_4||=1$, so $\triangle P_1P_2P_4$ is acute. Reordering again if necessary, we can assume $P_3$ lies within the acute angle  $\angle P_2P_1P_4$. Suppose a point $P_i$ is at distance 1 from $P_3$. Since $||P_3P_i||=||P_1P_2||=1$, $P_3P_i$ and $P_1P_2$ must intersect; if not, then some two points from $P_1,P_2,P_3,P_i$ would be at distance $>1$. Similarly, $P_3P_i$ and $P_1P_4$ must intersect. So $P_3P_i$ intersects both $P_1P_2$ and $P_1P_4$. It follows that $P_i=P_1$ is the only possibility. Plainly, $P_1$ is the only point at distance 1 from $P_4$. With $P_4$ removed, we arrive at a subgraph with $n-1$ vertices and one edge less from $G$. By induction hypothesis, the new graph has at most $n-1$ edges. Hence, $|E(G)|\leq n$.
+Let us proceed by induction on $n$. The statement is clearly true for $n=1,2,3$ as $\binom{n}{2}\leq n$ in these cases. Suppose the statement is true for any $n-1$ points on the plane, $n\geq 4$. Let $P_1,\dots, P_n$ be $n$ distinct points on the plane with maximum distance 1, namely,  $\diam{\{P_1,\dots,P_n\}}=1$. Let $G$ be the graph with vertices  $P_1,\dots, P_n$ and  edges  pairs of vertices at distance 1. We want to show $|E(G)|\leq n$. If each vertex has most degree 2, then by the handshaking lemma, there are at most $n$ edges, as required. If there exists some vertex has degree at least 3, then after reordering, we can assume this vertex is $P_1$ and three vertices connected to $P_1$ are $P_2,P_3,P_4$. Note $\diam{\{P_1,\dots,P_n\}}=1$ and $||P_1P_2||=||P_1P_4||=1$, so $\triangle P_1P_2P_4$ is acute. Reordering again if necessary, we can assume $P_3$ lies within the acute angle  $\angle P_2P_1P_4$. Suppose a point $P_i$ is at distance 1 from $P_3$. Since $||P_3P_i||=||P_1P_2||=1$, $P_3P_i$ and $P_1P_2$ must intersect; if not, then some two points from $P_1,P_2,P_3,P_i$ would be at distance $>1$. Similarly, $P_3P_i$ and $P_1P_4$ must intersect. So $P_3P_i$ intersects both $P_1P_2$ and $P_1P_4$. It follows that $P_i=P_1$ is the only possibility. Plainly, $P_1$ is the only point at distance 1 from $P_4$. With $P_4$ removed, we arrive at a subgraph with $n-1$ vertices and one edge less from $G$. By induction hypothesis, the new graph has at most $n-1$ edges. Hence, $|E(G)|\leq n$.
 
 
 \begin{center}
@@ -130,7 +130,7 @@ Let us proceed by induction on $n$. The statement is clearly true for $n=1,2,3$ 
 
 
 \newpage
-\noindent \textbf{Q2:} It suffices to prove the statement for the standard simplex $\Delta^n\subset \RR^{n+1}$, since every regular simplex can be transformed into the standard simplex by an affine map. Note $\Delta^n$ is the convex hull spanned the canonical basis of $\RR^{n+1}$:$$e_1=(1,0,\dots,0), e_2=(0,1,\dots,0),\dots, e_{n+1} = (0,0,\dots,1).$$ Each $e_i$ is a vertex of $\Delta^n$ and each $\conv{\{e_i,e_j:i\not=j\}}$ is an edge. So there are $\binom{n+1}{2}$ the midpoints of the edges of $\Delta^n$ and they are $\{\frac{1}{2}e_i+\frac{1}{2}e_j:  1\leq i\not=j \leq n+1\}$. For any two distinct midpoints $\frac{1}{2}e_i+\frac{1}{2}e_j, \frac{1}{2}e_{i'}+\frac{1}{2}e_{j'}$, either $i\not=i',j\not=j'$ or $i=i', j\not=j'$ after reordering. In the former case,  $$\mathrm{dist}( \frac{1}{2}e_i+\frac{1}{2}e_j, \frac{1}{2}e_{i'}+\frac{1}{2}e_{j'} ) = ||\frac{1}{2}e_i+\frac{1}{2}e_j - \frac{1}{2}e_{i'}-\frac{1}{2}e_{j'}||= 1;$$
+\noindent \textbf{Q2:} It suffices to prove the statement for the standard simplex $\Delta^n\subset \RR^{n+1}$, since every regular simplex can be transformed into the standard simplex by an affine map after changing the ambient space dimension if necessary. Note $\Delta^n$ is the convex hull spanned the canonical basis of $\RR^{n+1}$:$$e_1=(1,0,\dots,0), e_2=(0,1,\dots,0),\dots, e_{n+1} = (0,0,\dots,1).$$ Each $e_i$ is a vertex of $\Delta^n$ and each $\conv{\{e_i,e_j:i\not=j\}}$ is an edge. So there are $\binom{n+1}{2}$ the midpoints of the edges of $\Delta^n$ and they are $\{\frac{1}{2}e_i+\frac{1}{2}e_j:  1\leq i\not=j \leq n+1\}$. For any two distinct midpoints $\frac{1}{2}e_i+\frac{1}{2}e_j, \frac{1}{2}e_{i'}+\frac{1}{2}e_{j'}$, either $i,j,i',j'$ are all distinct or $i=i', j\not=j'$ after reordering. In the former case,  $$\mathrm{dist}( \frac{1}{2}e_i+\frac{1}{2}e_j, \frac{1}{2}e_{i'}+\frac{1}{2}e_{j'} ) = ||\frac{1}{2}e_i+\frac{1}{2}e_j - \frac{1}{2}e_{i'}-\frac{1}{2}e_{j'}||= 1;$$
 in the latter case $$\mathrm{dist}( \frac{1}{2}e_i+\frac{1}{2}e_j, \frac{1}{2}e_{i'}+\frac{1}{2}e_{j'} ) = ||\frac{1}{2}e_i+\frac{1}{2}e_j - \frac{1}{2}e_{i'}-\frac{1}{2}e_{j'}|| =||\frac{1}{2}e_j -\frac{1}{2}e_{j'}||  = \frac{\sqrt{2}}{2}.$$
 So these midpoints form a 2-distance set.
 
@@ -139,7 +139,7 @@ So these midpoints form a 2-distance set.
 \newpage
 \noindent \textbf{Q3:} Let $R=\sqrt{\frac{5+\sqrt{5}}{10}}$ and $r=\sqrt{\frac{5-\sqrt{5}}{10}}$. Draw the graph on the complex plane and the vertices are $$Re^{\frac{\pi i}{10}},Re^{\frac{5\pi i}{10}},Re^{\frac{9\pi i}{10}},Re^{\frac{13 \pi i}{10}},Re^{\frac{17\pi i}{10}}, re^{\frac{\pi i}{5}}, re^{\frac{3\pi i}{5}},  re^{\pi i},  re^{\frac{7\pi i}{5}}, re^{\frac{9\pi i}{5}}.$$
 \begin{center}
-  \begin{tikzpicture}[style=thick,scale=0.50]
+  \begin{tikzpicture}[style=thick,scale=0.4]
     \draw (18:8.51cm) -- (90:8.51cm) -- (162:8.51cm) -- (234:8.51cm) -- (306:8.51cm) -- cycle;
     \draw (36:5.26cm) -- (180:5.26cm) -- (324:5.26cm) -- (108:5.26cm) -- (252:5.26cm) -- cycle;
     \foreach \x in {18,90,162,234,306}{
@@ -152,12 +152,24 @@ So these midpoints form a 2-distance set.
 
 
 \newpage
-\noindent \textbf{Q4:} (a)\\
+\noindent \textbf{Q4:} (a) We prove something stronger:\footnote{Since I know a little bit about the sunflower lemma, it is not of surprise that I know this result as well.}
+
+\begin{theorem}[Oddtown theorem]
+  If $\cc$ is a collection of subsets of $[n]$ such that each subset has an odd cardinality and all pairwise intersections have even cardinalities, then $|\cc|\leq n$.
+\end{theorem}
 
 
-(b) It is clear the statement is true for $n\leq 4$ as then  $\frac{(n-1)(n-2)}{6}\leq 1$. Assume $n\geq 5$ from now on. Every point $x=(x_1,\dots,x_n)\in V_n$ can be identified with a 3-subset of $[n]$, which is $\{i\in [n]: x_i=1\}$. Denote the identified set by $S(x)$ for each point $x$. Note for any two points $x,y\in V_n$, $||x-y||_2=2$ if and only if  $x,y$ differs at exactly 4 coordinates if and only if $|S(x)\cap S(y)|=1$. For each integer $i\in [n]$, there are $\binom{n-1}{4} \binom{4}{2}/2$ such (unordered) pairs of points $x,y$ that $S(x)\cap S(y)=\{i\}$. And so $$|E_n| = 3n\binom{n-1}{4}  \mbox{ and } |V_n|=\binom{n}{3}.$$
+In this problem's case, each subset has cardinality 3, which is odd, and the total number of subsets is $n+1>n$. It follows that there must be two sets $A_i$ and $A_j$ with $|A_i\cap A_j|$ odd, hence $|A_i\cap A_j|=1$.
 
-By part (a), for every $n+1$ points of $V_n$, say $a_1,\dots,a_{n+1}$, there are $i,j$ such that $|S(a_i)\cap S(a_j)|=1$, that is, $a_i$ and $ a_j$ are connected by an edge. So the independence number $\alpha(G) \leq n$. But then $$\chi(G) \geq \frac{|V(G)|}{\alpha(G)} \geq \frac{\binom{n}{3}}{n} = \frac{(n-1)(n-2)}{6}$$ as required.\\
+\begin{proof}[Proof of the oddtown theorem]
+  For each subset $x\subset [n]$, identify $x$ with a vector $f(x)=(x_1,\dots,x_n)\in \FF_2^n$, where $x_i=1$ if $i\in x$ and $x_i=0$ if $i\notin x$. Indeed, $f$ is a bijection from $2^{[n]}$ to $\FF_2^n$. Now for $x,y\in \FF_2^n$, $\inner{x,y}$ means the number (modulo 2) of coordinates that is 1 in both $x$ and $y$. For each $c\in \ccc$, that $c$ is of odd size is to say $\inner{f(c),f(c)}=1$; for two different $c,d\in \ccc$, that $|c\cap d|$ is even is to say $\inner{f(c),f(d)}=0$. Therefore, $f(\cc)$ is orthonormal and hence  linearly independent. It follows that $|\ccc|=|f(\ccc)|\leq \dim( \FF_2^n ) =n$.
+\end{proof}
+
+
+
+(b) It is clear the statement is true for $n\leq 4$ as then  $\frac{(n-1)(n-2)}{6}\leq 1$. Assume $n\geq 5$ from now on. Every point $x=(x_1,\dots,x_n)\in V_n$ can be identified with a 3-subset of $[n]$, which is $\{i\in [n]: x_i=1\}$. Denote the identified set by $S(x)$ for each point $x$. (So $S$ is the inverse function of $f$ in part (a).) Note for any two points $x,y\in V_n$, $||x-y||_2=2$ if and only if  $x,y$ differs at exactly 4 coordinates if and only if $|S(x)\cap S(y)|=1$. For each integer $i\in [n]$, there are $\binom{n-1}{4} \binom{4}{2}/2$ such (unordered) pairs of points $x,y$ that $S(x)\cap S(y)=\{i\}$. And so $$|E_n| = 3n\binom{n-1}{4}  \mbox{ and } |V_n|=\binom{n}{3}.$$
+
+By part (a), for every $n+1$ points of $V_n$, say $a_1,\dots,a_{n+1}$, there are $i,j$ such that $|S(a_i)\cap S(a_j)|=1$, that is, $a_i$ and $ a_j$ are connected by an edge. So the independence number $\alpha(G) \leq n$. It follows that $$\chi(G) \geq \frac{|V(G)|}{\alpha(G)} \geq \frac{\binom{n}{3}}{n} = \frac{(n-1)(n-2)}{6}$$ as required.\\
 
 
 (c) It is clear the statement is true for $n\leq 4$ as then  $\frac{(n-1)(n-2)}{6}\leq 1$. Assume $n\geq 5$. The graph described in part (b) can be draw in $\EE^n$. The problem is that each edge is of length $2$. But this can be resolved by a rescaling $f:\EE^n \to \EE^n,  v\mapsto \frac{1}{2}v$. Now there is an edge in if and only $x$ and $y$ differs at 4 coordinates and hence  $||f(x)-f(y)||=1$. That is $f(G)$ is a unit distance graph in $\EE^n$. Hence, $\chi(\EE^d) \geq \chi(G) \geq   \frac{(n-1)(n-2)}{6}$ as required.
@@ -175,17 +187,16 @@ Suppose $p$ lies on the surface of $\conv{P}$. This implies that there is a hype
                                       & = ||q-p||^2 + 2tb - 2t\inner{q,n}                   \\
                                       & \geq  ||q-p||^2 + 2tb -2tb =||q-p||^2 \geq 0.
 \end{align*}
-It follows that $||q - (p+tn)|| \geq || p-(p+tn) ||$ for all $p\in P$ and so $p+tn \in reg(p)$ as claimed.\\
+It follows that $||q - (p+tn)|| \geq || p-(p+tn) ||$ for all $q\in P$ and so $p+tn \in reg(p)$ as claimed.\\
 
 
-Now suppose $reg(p)$ is unbounded. As the intersection of half-spaces, $reg(p)$ is a convex polyhedron. Since $reg(p)$ is convex and unbound, there exists a ray with initial point $p$ lying entirely in $reg(p)$. Say the ray can be parametrized as $p+tn$ for some $n\in \RR^d$ and parameter $t\in \RR_{\geq 0}$. Set $b= \inner{p,n}$. We claim that the hyperplane $$h=\{x\in \RR^d: \inner{x, n} = b \}$$ intersects with $\conv{P}$  at a face of  $\conv{P}$, or equivalently, $\conv{P}\subset h_+ =\{x\in \RR^d: \inner{x, n} \leq b \}$ and $\conv{P} \cap h_+ \not= \emptyset$. It is clear $\conv{P} \cap h_+ \not= \emptyset$ as $p\in h_+$. To prove the claim, we note that if $P\subset h_+$, then $\conv{P}\subset h_+$ as $h_+$ is convex, and so it suffices to show $P\subset h_+$. We suppose by contradiction that there is some $q\in P$ such that $q$ is not in $h_+$, that is, $\inner{q,n}>b$. Note $q\not= p$. Then by exactly the same calculation as above, we have
+For the reverse direction, suppose $reg(p)$ is unbounded. As the intersection of half-spaces, $reg(p)$ is a convex polyhedron. Since $reg(p)$ is convex and unbounded, there exists a ray with initial point $p$ lying entirely in $reg(p)$. Say the ray can be parametrized as $p+tn$ for some $n\in \RR^d$ and parameter $t\in \RR_{\geq 0}$. Set $b= \inner{p,n}$. We claim that the hyperplane $$h=\{x\in \RR^d: \inner{x, n} = b \}$$ intersects with $\conv{P}$  at a face of  $\conv{P}$, or equivalently, $\conv{P}\subset h_+ =\{x\in \RR^d: \inner{x, n} \leq b \}$ and $\conv{P} \cap h_+ \not= \emptyset$. It is clear $\conv{P} \cap h_+ \not= \emptyset$ as $p\in h_+$ and hence $p$ lies ont on surface of  $\conv{P}$ if the claim is true. To prove the claim, we note that if $P\subset h_+$, then $\conv{P}\subset h_+$ as $h_+$ is convex, and so it suffices to show $P\subset h_+$. We suppose by contradiction that there is some $q\in P$ such that $q$ is not in $h_+$, that is, $\inner{q,n}>b$. Note $q\not= p$. Then by exactly the same calculation as above, we have
 \begin{align*}
   ||q-(p+tn)||^2  - ||p-(p+tn)||^2 & = ||q-p||^2 + 2tb - 2t\inner{q,n} =  ||q-p||^2 - 2t( \inner{q,n} -b).
 \end{align*}
-
 Since $\inner{q,n}>b$, we have $\inner{q,n} -b >\epsilon >0$ for some $\epsilon$. Take some $t> \frac{||q-p||^2}{ 2\epsilon}$ and we have
 $$ ||q-(p+tn)||^2  - ||p-(p+tn)||^2  = ||q-p||^2 - 2t( \inner{q,n} -b)  < ||q-p||^2 - 2 \frac{||q-p||^2}{ 2\epsilon}\epsilon=0.$$
-But this means $||q-(p+tn)|| < ||p-(p+tn)||$ and so $p+tn\notin reg(p)$, contradicting the fact  the ray $\{b+tn: t\geq 0\}$ lies entirely in $reg(p)$
+But this means $||q-(p+tn)|| < ||p-(p+tn)||$ and so $p+tn\notin reg(p)$, contradicting the fact  the ray $\{b+tn: t\geq 0\}$ lies entirely in $reg(p)$.
 
 % As the intersection of half-spaces containing an $\epsilon$-ball, $reg(p)$ is a convex polyhedron and has at least $d+1$ vertices. Let $V$ be the vertex set of $reg(p)$. By the Carath{\'e}odory's theorem, $p$ can be written as a convex combination of some $v_1,v_2\dots,v_{d+1} \in V$, say $$ p= \sum_{i=1}^{d+1} \lambda_i v_i \mbox{, where each } \lambda_i \geq 0 \mbox{ and } \sum_{i=1}^{d+1}\lambda_i=1.$$ As a vertex in the Voronoi diagram, each vertex is the intersection of $d$ hyperplanes bisecting and orthogonal to the line segments connecting some two points in $P$. Say $v_i$ is the intersection of the hyperplanes bisecting and orthogonal to the line segments joining $p$ to $x_{i,1},x_{i,2},\dots,x_{i,d}$. Then, $\dist{v_i}{p}=\dist{v_i}{x_{i,j}}$ for all $j=1,\dots,d$.
 
@@ -193,10 +204,10 @@ But this means $||q-(p+tn)|| < ||p-(p+tn)||$ and so $p+tn\notin reg(p)$, contrad
 
 
 \newpage
-\noindent \textbf{Q6:} (a). Denote by $x_1,x_2,x_3$ the centers of these three unit sphere. Then any point $p$ in the intersection of these spheres is at distance 1 from each $x_i$. In particular, since $p$ is of the same distance from $x_1$ and $x_2$, $p$ lies on the plane bisecting and orthogonal to the line segment $x_1x_2$. Similarly, $p$ lies on the plane bisecting and orthogonal to the line segment $x_1x_3$. The intersection of these two planes is a line and $p$ must lie on this line. But there are at most two points on the line is at distance 1 from $x_1$. Hence, the intersection of three unit spheres consists of at most 2 points.\\
+\noindent \textbf{Q6:} (a). Denote by $x_1,x_2,x_3$ the centers of these three unit sphere. Then any point $p$ in the intersection of these three spheres is at distance 1 from each $x_i$. In particular, since $p$ is of the same distance from $x_1$ and $x_2$, $p$ lies on the plane bisecting and orthogonal to the line segment $x_1x_2$. Similarly, $p$ lies on the plane bisecting and orthogonal to the line segment $x_1x_3$. The intersection of these two planes is a line and $p$ must lie on this line. But there are at most two points on the line at distance 1 from $x_1$. Hence, the intersection of three unit spheres consists of at most 2 points.\\
 
 
-(b). Suppose we have $n$ distinct points on $\RR^3$ realizing the maximum number of unit distances. Let $G$ be the graph such that the vertex set of $G$ is these $n$ points and two vertices are connected by an edge if and only if they are of unit distance from each other. Then $G$ contains no subgraph isomorphic to $K_{3,3}$. Otherwise, there were three points in the intersection of three distinct unit spheres, violating part (a). So by the K{\"o}v{\'a}ri-S{\'o}s-Tur{\'a}n theorem, $|E(G)| = O(n^{2-1/3}) = O(n^{5/3})$.
+(b). Suppose we have $n$ distinct points on $\RR^3$ realizing the maximum number of unit distances. Let $G$ be the graph such that the vertex set of $G$ is these $n$ points and two vertices are connected by an edge if and only if they are at unit distance from each other. Then $G$ contains no subgraph isomorphic to $K_{3,3}$. Otherwise, there were three points in the intersection of three distinct unit spheres, violating part (a). So by the K{\"o}v{\'a}ri-S{\'o}s-Tur{\'a}n theorem, $|E(G)| = O(n^{2-1/3}) = O(n^{5/3})$.
 
 To get the inequality in statement, we need a somewhat more precise estimate, \emph{cf.} Theorem 17.2.5 on the lecture notes. Plainly, $U_3(n) = |E(G)|\leq ex(n,K_{3,3}) \leq (\frac{1}{2}+o(1)) n^{5/3}$.
 
